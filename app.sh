@@ -1,8 +1,9 @@
-#/bin/sh
+#!/bin/sh
 
-if ["$DATABASE" = "postgres" ]
+# shellcheck disable=SC1035
+if [ "$DATABASE" = "postgres" ]
 then
-    echo "Aiting for postgres..."
+    echo "Waiting for postgres..."
 
     while ! nc -z $SQL_HOST $SQL_PORT; do
         sleep 0.1
