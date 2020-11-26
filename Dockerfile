@@ -17,8 +17,12 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+#copy app.sh
+
+COPY app.sh
 
 # COPY PROJECTS
 
 COPY . .
 
+ENTRYPOINT ["/usr/src/app/app.sh"]

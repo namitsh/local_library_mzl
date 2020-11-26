@@ -2,7 +2,9 @@ version: "3.7"
 
 services:
   web:
-    build: ./local_library_mzl
+    build:
+      context: ./local_library_mzl
+      dockerfile: Dockerfile.prod
     command: gunicorn LocalLibrary.wsgi:application --bind 0.0.0.0:8000
     ports:
       - 8000:8000
@@ -19,4 +21,4 @@ services:
       - ./.env.prod.db
     
 volumes:
-  postrgres_data:
+  postgres_data:
