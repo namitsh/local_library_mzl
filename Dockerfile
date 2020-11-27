@@ -19,7 +19,7 @@ RUN pip install -r requirements.txt
 
 #copy app.sh
 
-COPY app.sh
+COPY app.sh .
 
 # COPY PROJECTS
 
