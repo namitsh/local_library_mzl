@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    stage: development
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: postgres-container
+
+  template:
+    metadata:
+      app: postgres-container
+      tier: backend
+    spec:
+      containers:
+        - name: postgres-container
+          image: postgres:12.0-alpine
+          envFrom:
+            - secretRef:
+                name: postgres_secret
+          ports:
+            - containerPorts: 5432
+          volumeMounts:
+            name: postgres-volume-mount
+            mountPath: /var/lib/postgresql/data
+
+      volumes:
+        - name: postgres-volume-mount
+          persistentVolumeClaim:
+            claimName: postgres-pvc
