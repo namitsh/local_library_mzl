@@ -14,3 +14,4 @@ env.bak/
 venv.bak/
 .env.*
 .idea/
+db.sq*
