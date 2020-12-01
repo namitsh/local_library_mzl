@@ -66,4 +66,5 @@ RUN chown -R locallibrary:locallibrary $APP_HOME
 USER locallibrary
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/home/locallibrary/web/app.prod.sh"]
+# ENTRYPOINT ["/home/locallibrary/web/app.prod.sh"]
+
