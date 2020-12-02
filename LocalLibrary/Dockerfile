@@ -20,12 +20,10 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 #copy app.sh
-
-#COPY app.sh .
-
 # COPY PROJECTS
 
 COPY . .
 
-#ENTRYPOINT ["/usr/src/app/app.sh"]
+ENTRYPOINT ["/usr/src/locallibrary/app.sh"]
+
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

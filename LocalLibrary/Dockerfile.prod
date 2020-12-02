@@ -68,3 +68,4 @@ USER locallibrary
 # run entrypoint.prod.sh
 # ENTRYPOINT ["/home/locallibrary/web/app.prod.sh"]
 
+
