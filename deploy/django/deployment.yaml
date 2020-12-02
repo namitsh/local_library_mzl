@@ -1,0 +1,33 @@
+#kubectl create secret generic django-secret --from-env-file=.env.web.db
+#kubectl create configmap django-config --from-env-file=.env.dev
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+  labels:
+    stage: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-container
+  template:
+    metadata:
+      labels:
+        app: django-container
+        tier: frontend
+    spec:
+      containers:
+        - name: django-container
+          image: namitsh/local-library-dev:v1
+          ports:
+            -containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: django-secret
+            - configMapRef:
+                name: django-config
+          env:
+            - name: SQL_HOST
+              value: postgres-svc
